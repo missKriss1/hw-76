@@ -4,3 +4,8 @@ export interface IMessage{
     author: string;
     datetime: string;
 }
+
+export interface INewMessage{
+    author: string;
+    message: string;
+}
