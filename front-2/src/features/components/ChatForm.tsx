@@ -20,6 +20,10 @@ const ChatForm: React.FC<Props> = ({onSubmit}) => {
 
   const onSubmitForm =  async (e: React.FormEvent) => {
     e.preventDefault();
+    if(!form.author.trim() || !form.message.trim()){
+      alert('Please fill in the blanks ')
+      return
+    }
     onSubmit({...form, datetime: dayjs().format('DD.MM.YYYY HH:mm')});
     setForm({ ...initialState });
   };

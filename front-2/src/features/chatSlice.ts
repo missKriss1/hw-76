@@ -28,9 +28,9 @@ export const messageSlice = createSlice({
       .addCase(fetchMessage.pending, (state) => {
         state.fetching = true;
       })
-      .addCase(fetchMessage.fulfilled, (state, {payload: products}) => {
+      .addCase(fetchMessage.fulfilled, (state, {payload: mes}) => {
         state.fetching = false;
-        state.items = products;
+        state.items = mes;
       })
       .addCase(fetchMessage.rejected, (state) => {
         state.fetching = false;

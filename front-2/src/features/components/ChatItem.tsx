@@ -14,9 +14,16 @@ const ChatItem: React.FC <Props> = ({message}) => {
 
     if(date.isSame(now.subtract(1, 'day'), 'day')){
       return 'Yesterday'
-    }else{
-      return  date.format('DD.MM.YYYY HH:mm');
+    }else if(!date.isSame(now, 'day')){
+      const formatDateToDayOrMonth = date.format('DD MMM')
+
+      if(!date.isSame(now, 'year')){
+        return `${formatDateToDayOrMonth} ${date.format('YYYY')}`
+      }
+      return formatDateToDayOrMonth
     }
+
+    return date.format('HH:mm')
   }
 
   return (
