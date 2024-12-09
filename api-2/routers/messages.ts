@@ -13,7 +13,8 @@ messagesRouter.get("/", async (req , res) => {
             if (isNaN(date.getDate())) {
                 res.status(400).send({error: 'Datetime is incorrect'});
             }else{
-                messages = await fileDb.getByDataTime(date);
+               let messagesByQuery = await fileDb.getByDataTime(date);
+               messages = await fileDb.getMessage(messagesByQuery);
             }
         }else{
             messages = await fileDb.getMessage()
