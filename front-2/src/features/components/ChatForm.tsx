@@ -20,13 +20,11 @@ const ChatForm: React.FC<Props> = ({onSubmit}) => {
 
   const onSubmitForm =  async (e: React.FormEvent) => {
     e.preventDefault();
-    if(!form.author.trim() || !form.message.trim()){
-      alert('Please fill in the blanks ')
-      return
-    }
     onSubmit({...form, datetime: dayjs().format('DD.MM.YYYY HH:mm')});
     setForm({ ...initialState });
   };
+
+  const disableButton = !form.author.trim() || !form.message.trim();
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {name, value} = e.target;
@@ -59,7 +57,7 @@ const ChatForm: React.FC<Props> = ({onSubmit}) => {
             />
           </Grid>
           <Grid>
-            <Button type="submit" color="primary">Add</Button>
+            <Button type="submit" color="primary" disabled={disableButton}>Add</Button>
           </Grid>
         </Grid>
       </form>
